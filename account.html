@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Account Detail</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="account-detail"></div>
+
+  <script src="data.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const accountId = parseInt(urlParams.get('id'));
+    const account = accounts.find(acc => acc.id === accountId);
+    const container = document.getElementById("account-detail");
+
+    if (account) {
+      container.innerHTML = `
+        <h1>${account.name}</h1>
+        <p>Level: ${account.level}</p>
+        <p>Character: ${account.character}</p>
+        <a href="index.html">Back to all accounts</a>
+      `;
+    } else {
+      container.innerHTML = "<p>Account not found.</p>";
+    }
+  </script>
+</body>
+</html>
